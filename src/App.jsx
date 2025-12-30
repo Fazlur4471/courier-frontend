@@ -5,24 +5,36 @@ import CourierForm from "./app/CourierForm";
 import Records from "./app/Records";
 import PrintLabel from "./app/PrintLabel";
 import Reports from "./app/Reports";
+import PasswordGate from "./components/PasswordGate";
 
+const API_BASE = import.meta.env.VITE_API_BASE;
 
-const API_BASE = "http://localhost:5000/api";
 
 export default function App() {
+  const [authorized, setAuthorized] = useState(
+    localStorage.getItem("maharaja_auth") === "true"
+  );
+
   const [currentPage, setCurrentPage] = useState("dashboard");
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(false);
 
+  // ✅ Hooks ALWAYS run
   useEffect(() => {
-    fetchEntries();
-  }, []);
+    if (authorized) {
+      fetchEntries();
+    }
+  }, [authorized]);
 
   async function fetchEntries() {
     setLoading(true);
-    const res = await fetch(`${API_BASE}/couriers`);
-    const data = await res.json();
-    setEntries(data);
+    try {
+      const res = await fetch(`${API_BASE}/couriers`);
+      const data = await res.json();
+      setEntries(data);
+    } catch (err) {
+      console.error("API fetch failed", err);
+    }
     setLoading(false);
   }
 
@@ -61,12 +73,7 @@ export default function App() {
       return <Dashboard entries={entries} setCurrentPage={setCurrentPage} />;
 
     if (currentPage === "new")
-      return (
-        <CourierForm
-          createEntry={createEntry}
-          setCurrentPage={setCurrentPage}
-        />
-      );
+      return <CourierForm createEntry={createEntry} setCurrentPage={setCurrentPage} />;
 
     if (currentPage === "records")
       return (
@@ -85,6 +92,11 @@ export default function App() {
       return <Reports entries={entries} />;
 
     return null;
+  }
+
+  // 🔐 AUTH GATE — AFTER hooks
+  if (!authorized) {
+    return <PasswordGate onSuccess={() => setAuthorized(true)} />;
   }
 
   return (
