@@ -78,7 +78,7 @@ export default function CourierForm({ createEntry, setCurrentPage }) {
 
           <div>
             <p className="text-slate-600">
-              📞 ++91 98431 14920 / +91 75983 14920
+              📞 +91 98431 14920 / +91 75983 14920
             </p>
           </div>
 
