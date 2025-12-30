@@ -7,7 +7,8 @@ import PrintLabel from "./app/PrintLabel";
 import Reports from "./app/Reports";
 import PasswordGate from "./components/PasswordGate";
 
-const API_BASE = import.meta.env.VITE_API_BASE;
+const API_BASE = "https://courier-backend-y6zt.onrender.com/api";
+
 
 
 export default function App() {
