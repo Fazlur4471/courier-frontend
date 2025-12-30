@@ -33,7 +33,7 @@ export default function Reports() {
       {rows.length === 0 ? (
         <p className="text-gray-500">No data available</p>
       ) : (
-        <div className="overflow-auto print-only">
+        <div className="overflow-auto">
           <table className="w-full border text-sm">
             <thead className="bg-gray-100">
               <tr>

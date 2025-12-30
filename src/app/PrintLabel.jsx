@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Printer } from "lucide-react";
 import PrintPage from "../components/PrintPage";
+import PrintPreview from "../components/PrintPreview";
 
 export default function PrintLabel({ entries }) {
   const [selectedId, setSelectedId] = useState("");

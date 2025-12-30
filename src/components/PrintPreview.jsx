@@ -1,7 +1,8 @@
 export default function PrintPreview({
   data,
   color = "Black & White",
-  size = "Postcard"
+  size = "Postcard",
+  preview = false
 }) {
   const sizeMap = {
     Postcard: { w: "100mm", h: "150mm" },
@@ -13,49 +14,56 @@ export default function PrintPreview({
 
   return (
     <div
-      className={`print-label ${
-        isColor ? "print-color" : "print-bw"
-      }`}
+      className={`
+        ${preview ? "print-preview" : "print-only"}
+        ${isColor ? "print-color" : "print-bw"}
+      `}
       style={{
         width: w,
-        height: h
+        height: h,
+        padding: "12mm"
       }}
     >
-      <div className="border-b pb-2 mb-2">
+      {/* HEADER */}
+      <div className="border-b pb-2 mb-3">
         <h1 className="text-sm font-bold tracking-wide">
           MAHARAJA ELECTRONICS
         </h1>
         <p className="text-xs">Ismail – Proprietor</p>
         <p className="text-xs">
-          +91 98765 43210, +91 98765 32109
+          +91 98431 14920 / +91 75983 14920
         </p>
       </div>
 
-      <div className="text-xs mb-2">
+      {/* FROM */}
+      <div className="text-xs mb-3">
         <p className="font-semibold uppercase">From</p>
         <p>
-          123, Main Bazaar Street<br />
-          Salem – 636001<br />
+          No-30, Erikadu, Next to Kattabomman hospital<br />
+          Behind Veerapandiyanagar, New Bus Stand<br />
+          Salem – 636004<br />
           Tamil Nadu, India
         </p>
       </div>
 
-      <hr className="border-dashed my-2" />
+      <hr className="border-dashed my-3" />
 
+      {/* TO */}
       <div className="text-xs">
         <p className="font-semibold uppercase">To</p>
-        <p className="font-bold mt-1">
-          {data.customer_name}
-        </p>
+        <p className="font-bold mt-1">{data.customer_name}</p>
         <p>{data.phone}</p>
-        <p className="mt-1">{data.address}</p>
+        <p className="mt-1 whitespace-pre-line">
+          {data.address}
+        </p>
         <p className="font-bold mt-1">
           PIN: {data.pincode}
         </p>
       </div>
 
-      <p className="text-[10px] mt-3 text-gray-500">
-        Printed on {new Date().toLocaleString()}
+      {/* FOOTER */}
+      <p className="text-[10px] mt-4 text-gray-500">
+        Printed on {new Date().toLocaleString("en-IN")}
       </p>
     </div>
   );
