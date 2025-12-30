@@ -100,7 +100,7 @@ export default function PrintLabel({ entries }) {
                 </h2>
                 <p className="text-sm">Ismail – Proprietor</p>
                 <p className="text-sm">
-                  📞 +91 98765 43210, +91 87654 32109
+                  📞 ++91 98431 14920 / +91 75983 14920
                 </p>
               </div>
 
@@ -108,9 +108,10 @@ export default function PrintLabel({ entries }) {
               <div className="mb-4">
                 <p className="text-xs font-semibold mb-1">FROM</p>
                 <p className="text-sm">
-                  123, Main Bazaar Street<br />
-                  Salem – 636001<br />
-                  Tamil Nadu, India
+                No-30, Erikadu, Next to Kattabomman hospital<br />
+                Behind Veerapandiyanagar, New Bus Stand<br />
+                Salem – 636004<br />
+                Tamil Nadu, India
                 </p>
               </div>
 
