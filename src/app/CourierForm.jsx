@@ -78,15 +78,15 @@ export default function CourierForm({ createEntry, setCurrentPage }) {
 
           <div>
             <p className="text-slate-600">
-              📞 +91 98765 43210<br />
-              📞 +91 87654 32109
+              📞 ++91 98431 14920 / +91 75983 14920
             </p>
           </div>
 
           <div className="col-span-2 text-slate-600">
-            123, Main Bazaar Street<br />
-            Salem – 636001<br />
-            Tamil Nadu, India
+                No-30, Erikadu, Next to Kattabomman hospital<br />
+                Behind Veerapandiyanagar, New Bus Stand<br />
+                Salem – 636004<br />
+                Tamil Nadu, India
           </div>
         </div>
       </div>
